@@ -1,17 +1,17 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef GEOMOBJECT_H
+#define GEOMOBJECT_H
 
-#include "Surface.h"
+#include "Polygone.h"
 #include <fstream.h>
 //#include "TH3F.h"
 
-class Object{
+class GeomObject{
  public:
-  Object(const char*);
+  GeomObject(const char*);
   void ApplyMatrices(double Rot[3][3],double Trans[3]);
   //  virtual void Interact();
   //  void Show();
-  vector<Surface*> m_surf;
+  vector<Polygone*> m_pol;
  private:
 
 };

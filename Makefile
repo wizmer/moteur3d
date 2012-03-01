@@ -4,11 +4,11 @@ SOFLAGS       =  -dynamiclib -single_module -undefined dynamic_lookup
 
 all:
 	g++ -c Point.cpp -o libPoint.o
-	g++ -c Surface.cpp -o libSurface.o
-	g++ -c ${ROOTCFLAGS}  Object.cpp -o libObject.o 
+	g++ -c Polygone.cpp -o libPolygone.o
+	g++ -c ${ROOTCFLAGS}  GeomObject.cpp -o libGeomObject.o 
 	g++ -c ${ROOTCFLAGS}  WorldObject.cpp -o libWObject.o 
 	g++ -c ${ROOTCFLAGS}  WorldManager.cpp -o libWManager.o 
-	g++ ${SOFLAGS}  -o libObj.so libPoint.o libSurface.o libObject.o libWObject.o libWManager.o
+	g++ ${SOFLAGS}  -o libObj.so libPoint.o libPolygone.o libGeomObject.o libWObject.o libWManager.o
 	g++ ${ROOTCFLAGS} -L. -lObj ${ROOTLIBS}  go.cpp -o go
 
 clean:
