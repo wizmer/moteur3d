@@ -17,6 +17,7 @@ class Polygone{
   Polygone(Polygone* surf,double rot[3][3],double trans[3] = NULL);
   void UpdateBarycentre();
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);
+  ~Polygone();
 };
 
 #endif

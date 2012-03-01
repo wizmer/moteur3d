@@ -13,7 +13,10 @@ class GeomObject{
   //  virtual void Interact();
   //  void Show();
   vector<Polygone*> m_pol;
+
+  ~GeomObject();
  private:
+
 
 };
 

@@ -8,10 +8,12 @@ class WorldObject{
  public:
   vector<Polygone*> m_pol;
   WorldObject(GeomObject* obj,double **rot = NULL, double *trans = NULL);
+  ~WorldObject();
  private:
   double Rot[3][3];
   double Trans[3];
   GeomObject* m_obj;
+  
 };
 
 

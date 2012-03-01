@@ -17,3 +17,7 @@ WorldObject::WorldObject(GeomObject* obj,double **rot, double *trans):m_obj(obj)
     m_pol.push_back(new Polygone(m_obj->m_pol[i],Rot,Trans));
   }
 }
+
+WorldObject::~WorldObject(){
+  // In case of dynamical allocations within the constructor.
+}

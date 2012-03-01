@@ -15,3 +15,8 @@ void Point::ApplyMatrices(double Rot[3][3],double Trans[3]){
  Point::Point(Point* M,double rot[3][3],double trans[3]):x((*M).x),y((*M).y),z((*M).z){
   ApplyMatrices(rot,trans);
 }
+
+Point::~Point()
+{
+  //In prevision of dynamical allocations.
+}

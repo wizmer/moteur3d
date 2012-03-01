@@ -10,6 +10,8 @@ class Point{
  Point(double fx,double fy,double fz):x(fx),y(fy),z(fz){}
   Point(Point* M,double rot[3][3],double trans[3] = NULL);
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);
+ ~Point();
+
 };
 
 #endif

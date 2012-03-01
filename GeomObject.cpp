@@ -20,6 +20,10 @@ void GeomObject::ApplyMatrices(double Rot[3][3],double Trans[3]){
   }
 }
 
+GeomObject::~GeomObject(){
+  //In prevision of dynamical allocations;
+}
+
 // void Object::Show(){
 //   int N = Surf.size();
 //   TH3F* h = new TH3F("h","h",100,-2,2,100,-2,2,100,-2,2);

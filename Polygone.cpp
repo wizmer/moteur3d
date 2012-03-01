@@ -30,3 +30,7 @@ void Polygone::ApplyMatrices(double Rot[3][3], double Trans[3]){
   for(int i = 0;i<N;i++) M[i]->ApplyMatrices(Rot,Trans);
   UpdateBarycentre();
 }
+
+Polygone::~Polygone(){
+  //in prevision of dynamical allocations
+}
