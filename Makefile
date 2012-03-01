@@ -9,7 +9,7 @@ all:
 	g++ -c ${ROOTCFLAGS}  WorldObject.cpp -o libWObject.o 
 	g++ -c ${ROOTCFLAGS}  WorldManager.cpp -o libWManager.o 
 	g++ ${SOFLAGS}  -o libObj.so libPoint.o libSurface.o libObject.o libWObject.o libWManager.o
-	g++ ${ROOTCFLAGS} -L/Users/coste/Desktop/moteur -lObj ${ROOTLIBS}  go.cpp -o go
+	g++ ${ROOTCFLAGS} -L. -lObj ${ROOTLIBS}  go.cpp -o go
 
 clean:
 	rm -f *.so *.o go
