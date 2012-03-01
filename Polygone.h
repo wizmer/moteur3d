@@ -2,8 +2,9 @@
 #define POLYGONE_H
 
 #include "Point.h"
-#include <vector.h>
+#include <vector>
 
+using namespace std;
 class Polygone{
  public:
   vector <Point*> M;

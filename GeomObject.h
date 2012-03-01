@@ -2,8 +2,9 @@
 #define GEOMOBJECT_H
 
 #include "Polygone.h"
-#include <fstream.h>
+#include <fstream>
 //#include "TH3F.h"
+using namespace std;
 
 class GeomObject{
  public:
