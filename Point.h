@@ -20,6 +20,10 @@ class Point{
  void SetX(double fx){x = fx;}
  void SetY(double fy){y = fy;}
  void SetZ(double fz){z = fz;}
+
+ void AddX(double fx){ x += fx;}
+ void AddY(double fy){ y += fy;}
+ void AddZ(double fz){ z += fz;}
 };
 
 #endif

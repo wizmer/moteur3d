@@ -5,6 +5,7 @@
 #include "Camera.h"
 
 #include <math.h>
+#include <iostream>
 
 class ProjPoint{
  public:

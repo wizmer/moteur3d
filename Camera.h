@@ -2,6 +2,8 @@
 #define CAMERA_H
 
 #include "Point.h"
+#include <math.h>
+#include <iostream>
 
 class Camera{
  private:
@@ -22,8 +24,17 @@ class Camera{
   /* void MoveRight(){ double x = m_pos->GetX(); m_pos->SetX(x - StepTranslation);} */
   void MoveLeft(){};
   void MoveRight(){};
-  void MoveBack(){};
-  void MoveUp(){};
+  void MoveBack(){
+    m_pos->AddX( -cos(Tau)*sin(Phi)*StepTranslation);
+    m_pos->AddY( -cos(Tau)*cos(Phi)*StepTranslation);
+    m_pos->AddZ( -sin(Tau)*StepTranslation);
+    //    std::cout << "tau : " << Tau << std::endl;
+  };
+  void MoveUp(){
+    m_pos->AddX( cos(Tau)*sin(Phi)*StepTranslation);
+    m_pos->AddY( cos(Tau)*cos(Phi)*StepTranslation);
+    m_pos->AddZ( sin(Tau)*StepTranslation);
+  };
 
   double GetX(){return m_pos->GetX();};
   double GetY(){return m_pos->GetY();};
