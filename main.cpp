@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "ProjPolygone.h"
+#include "KeyHandler.h"
 
 #include "TCanvas.h"
 #include "TH2D.h"
@@ -41,9 +42,11 @@ int main(int argc, char *argv[]){
   ProjPol->Dump();
 
   TCanvas* can = new TCanvas();
-  TH2D* h = new TH2D("h","h",100,-0.5,0.5,100,-0.5,0.5);
+  TH2D* h = new TH2D("h","h;Phi(rad);Tau(rad)",100,-0.5,0.5,100,-0.5,0.5);
   h->Draw();
   ProjPol->Plot();
+
+  KeyHandler* key = new KeyHandler(Cam,can,ProjPol);
   app.Run();
   return 1;
 

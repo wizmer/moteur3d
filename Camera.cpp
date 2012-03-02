@@ -17,3 +17,4 @@ void Camera::SetXYZ(double x,double y,double z){
   m_pos->SetY(y);
   m_pos->SetZ(z);
 }
+
