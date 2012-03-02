@@ -1,5 +1,7 @@
 #include "Polygone.h"
 
+using namespace std;
+
 Polygone::Polygone(Polygone* surf){
   int Nsurf = surf->M.size();
   for(int i = 0;i<Nsurf;i++){

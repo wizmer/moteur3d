@@ -1,5 +1,7 @@
 #include "ProjPolygone.h"
 
+using namespace std;
+
 ProjPolygone::ProjPolygone(Polygone* fPol):m_pol(fPol){
   m_projpoint = m_pol->CreateProjection();
 }

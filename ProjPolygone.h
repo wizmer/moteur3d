@@ -6,6 +6,8 @@
 #include "Camera.h"
 #include "TMarker.h"
 
+#include <iostream>
+
 class ProjPolygone{
  private:
   Polygone* m_pol;
