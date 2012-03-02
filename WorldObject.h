@@ -1,4 +1,7 @@
+#ifndef WORLDOBJECT_H
+#define WORLDOBJECT_H
 #include "GeomObject.h"
+#include "Transformation.h"
 
 /* double I3 = {{1,0,0}, */
 /* 	       {0,1,0}, */
@@ -7,13 +10,12 @@
 class WorldObject{
  public:
   vector<Polygone*> m_pol;
-  WorldObject(GeomObject* obj,double **rot = NULL, double *trans = NULL);
+  WorldObject(GeomObject* obj,double **rot = NULL, double *trans = NULL, double scale = 1);
   ~WorldObject();
  private:
-  double Rot[3][3];
-  double Trans[3];
+  Transformation* m_trans;
   GeomObject* m_obj;
   
 };
 
-
+#endif

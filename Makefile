@@ -1,4 +1,6 @@
-CXX         = g++
+ROOTCFLAGS := $(shell root-config --cflags)
+ROOTLIBS := $(shell root-config --glibs)  -lMinuit -lHtml -lThread
+CXX         = g++  ${ROOTCFLAGS}
 CXXFLAGS    = -g -Wall
 
 SRC = $(wildcard *.cpp)
@@ -8,7 +10,7 @@ EXE = main
 all : $(EXE)
 
 $(EXE):$(OBJ)
-	$(CXX) -o $(EXE) $(OBJ)
+	$(CXX) ${ROOTLIBS} -o $(EXE) $(OBJ)
 
 %.o : %.cpp
 	@echo "-> Building object : " $@

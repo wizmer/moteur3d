@@ -1,9 +1,9 @@
 #include "Polygone.h"
 
-Polygone::Polygone(Polygone* surf,double rot[3][3],double trans[3]){
+Polygone::Polygone(Polygone* surf){
   int Nsurf = surf->M.size();
   for(int i = 0;i<Nsurf;i++){
-    M.push_back(new Point(surf->M[i],rot,trans));
+    M.push_back(new Point(surf->M[i]));
   }
 }
 
@@ -34,3 +34,14 @@ void Polygone::ApplyMatrices(double Rot[3][3], double Trans[3]){
 Polygone::~Polygone(){
   //in prevision of dynamical allocations
 }
+
+vector<ProjPoint*>* Polygone::CreateProjection(){
+  vector<ProjPoint*> *vec = new vector<ProjPoint*>;
+  int N = M.size();
+  for(int i = 0;i<N;i++){
+    ProjPoint* p = new ProjPoint(M[i]);
+    vec->push_back(p);
+  }
+  return vec;
+}
+

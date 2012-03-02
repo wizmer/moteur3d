@@ -8,6 +8,7 @@ GeomObject::GeomObject(const char* NameFile){
       f >> x1 >> y1 >> z1 >> x2 >> y2 >> z2 >> x3 >> y3 >> z3;
       m_pol.push_back(new Polygone(x1,y1,z1,x2,y2,z2,x3,y3,z3));
     }
+    m_pol.pop_back();
   }else{
     cout << "File : " << NameFile << " not found !" << endl;
   }

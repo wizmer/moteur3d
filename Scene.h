@@ -1,11 +1,11 @@
 #include "WorldObject.h"
 
-class WorldManager{
+class Scene{
  private:
-  static WorldManager* m_manager;
+  static Scene* m_manager;
 
  public:
-  static WorldManager* CreateWorldManager();
+  static Scene* CreateScene();
 
   void AddWorldObject(WorldObject* obj);
   vector<WorldObject*> m_wobj;

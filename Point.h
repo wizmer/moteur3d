@@ -8,10 +8,18 @@ class Point{
  public:
   double x,y,z;
  Point(double fx,double fy,double fz):x(fx),y(fy),z(fz){}
-  Point(Point* M,double rot[3][3],double trans[3] = NULL);
+  Point(Point* M);
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);
  ~Point();
 
+ public:
+ double GetX(){return x;}
+ double GetY(){return y;}
+ double GetZ(){return z;}
+
+ void SetX(double fx){x = fx;}
+ void SetY(double fy){y = fy;}
+ void SetZ(double fz){z = fz;}
 };
 
 #endif
