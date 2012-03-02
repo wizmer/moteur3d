@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
 
   TCanvas* can = new TCanvas();
   TH2D* h = new TH2D("h","h;Phi(rad);Tau(rad)",100,-0.5,0.5,100,-0.5,0.5);
-  h->Draw();
+  h->Draw("a");
   ProjPol->Plot();
 
   KeyHandler* key = new KeyHandler(Cam,can,ProjPol);
