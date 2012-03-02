@@ -7,10 +7,10 @@
 
 #include <vector>
 
-using namespace std;
+
 class Polygone{
  public:
-  vector <Point*> M;
+  std::vector <Point*> M;
   Point* Barycentre;
  private:
   int Couleur;
@@ -20,7 +20,7 @@ class Polygone{
   Polygone(Polygone* surf);
   void UpdateBarycentre();
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);
-  vector<ProjPoint*>* CreateProjection();
+  std::vector<ProjPoint*>* CreateProjection();
   ~Polygone();
 };
 

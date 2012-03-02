@@ -8,5 +8,5 @@ class Scene{
   static Scene* CreateScene();
 
   void AddWorldObject(WorldObject* obj);
-  vector<WorldObject*> m_wobj;
+  std::vector<WorldObject*> m_wobj;
 };

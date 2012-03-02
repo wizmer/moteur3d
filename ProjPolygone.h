@@ -9,7 +9,7 @@
 class ProjPolygone{
  private:
   Polygone* m_pol;
-  vector<ProjPoint*> *m_projpoint;
+  std::vector<ProjPoint*> *m_projpoint;
  public:
   ProjPolygone(Polygone* fPol);
   void Dump();

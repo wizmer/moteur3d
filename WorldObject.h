@@ -9,7 +9,7 @@
 
 class WorldObject{
  public:
-  vector<Polygone*> m_pol;
+  std::vector<Polygone*> m_pol;
   WorldObject(GeomObject* obj,double **rot = NULL, double *trans = NULL, double scale = 1);
   ~WorldObject();
  private:

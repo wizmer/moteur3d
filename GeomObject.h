@@ -4,7 +4,7 @@
 #include "Polygone.h"
 #include <fstream>
 //#include "TH3F.h"
-using namespace std;
+
 
 class GeomObject{
  public:
@@ -12,7 +12,7 @@ class GeomObject{
   void ApplyMatrices(double Rot[3][3],double Trans[3]);
   //  virtual void Interact();
   //  void Show();
-  vector<Polygone*> m_pol;
+  std::vector<Polygone*> m_pol;
 
   ~GeomObject();
  private:

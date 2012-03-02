@@ -1,5 +1,7 @@
 #include "GeomObject.h"
 
+using namespace std;
+
 GeomObject::GeomObject(const char* NameFile){
   ifstream f(NameFile);
   if(f.is_open()){
