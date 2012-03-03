@@ -2,16 +2,16 @@
 #define POLYGONE_H
 
 #include "Camera.h"
-#include "Point.h"
-#include "ProjPoint.h"
+#include "Point3D.h"
+#include "Point2D.h"
 
 #include <vector>
 #include <iostream>
 
 class Polygone{
  public:
-  std::vector <Point*> M;
-  Point* Barycentre;
+  std::vector <Point3D*> M;
+  Point3D* Barycentre;
  private:
   int Couleur;
 
@@ -20,7 +20,7 @@ class Polygone{
   Polygone(Polygone* surf);
   void UpdateBarycentre();
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);
-  std::vector<ProjPoint*>* CreateProjection();
+  std::vector<Point2D*>* GetTauPhi(Camera* cam);
   ~Polygone();
 };
 

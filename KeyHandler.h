@@ -4,20 +4,21 @@
 #include "TPad.h"
 #include <TRootCanvas.h>
 #include <KeySymbols.h>
-#include "ProjPolygone.h"
 #include "TClass.h"
+
+#include "Camera.h"
+#include "Scene3D.h"
 
 #include <iostream>
 
-#include "Camera.h"
 
 class KeyHandler : public TGFrame {
 
 public:
-  KeyHandler(Camera* fCam,TPad* fBoard,ProjPolygone* pol);
+  KeyHandler(Camera* fCam,TPad* fBoard);
    TPad* Board;
    Camera* Pos;
-   ProjPolygone* Pol;
+   //   ProjPolygone* Pol;
    ~KeyHandler();
 
    Bool_t HandleKey(Event_t *event);    // handler of the key events

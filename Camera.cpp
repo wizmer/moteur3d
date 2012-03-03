@@ -1,13 +1,13 @@
 #include "Camera.h"
 
 Camera::Camera(double fx,double fy,double fz,double fPhi,double fTau){
-  m_pos = new Point(fx,fy,fz);
+  m_pos = new Point3D(fx,fy,fz);
   Phi = fPhi;
   Tau = fTau;
 }
 
 
-void Camera::SetXYZ(Point* fPoint){
+void Camera::SetXYZ(Point3D* fPoint){
   m_pos->SetX(fPoint->GetX());
   m_pos->SetY(fPoint->GetY());
   m_pos->SetZ(fPoint->GetZ());

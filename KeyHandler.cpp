@@ -5,10 +5,9 @@ using namespace std;
 ///////////////////////////////////////////////////////////////////
 //  KeyHandler - virtual frame used to catch and handle key events
 ///////////////////////////////////////////////////////////////////
-KeyHandler::KeyHandler(Camera* fCam,TPad* fBoard, ProjPolygone* fPol) : TGFrame(gClient->GetRoot(),0,0)
+KeyHandler::KeyHandler(Camera* fCam,TPad* fBoard) : TGFrame(gClient->GetRoot(),0,0)
 {
   // Key handler constructor.
-  Pol = fPol;
   Pos = fCam;
   Board = fBoard;
   // get main frame of Tetris canvas
@@ -83,8 +82,9 @@ Bool_t KeyHandler::HandleKey(Event_t *event)
 	delete Board->GetListOfPrimitives()->At(i);
       }
     }
-    Pol->Update(Pos);
-    Pol->Plot();
+    //    Pol->Update(Pos);
+    //    Pol->Plot();
+    Scene3D::GetScene3D() -> Project(Pos);
   }
   //  gGo->CurrentStone->Redraw();
   gPad->Update();

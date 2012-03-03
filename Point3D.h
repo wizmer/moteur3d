@@ -1,16 +1,20 @@
 #ifndef POINT_H
 #define POINT_H
 
-#include <iostream> 
-//#include "global.h"
+#include "Point2D.h"
 
-class Point{
+#include <iostream> 
+
+class Camera;
+
+class Point3D{
  public:
   double x,y,z;
- Point(double fx,double fy,double fz):x(fx),y(fy),z(fz){}
-  Point(Point* M);
+ Point3D(double fx,double fy,double fz):x(fx),y(fy),z(fz){}
+  Point3D(Point3D* M);
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);
- ~Point();
+  ~Point3D();
+  Point2D* Project(Camera* cam);
 
  public:
  double GetX(){return x;}
@@ -25,5 +29,7 @@ class Point{
  void AddY(double fy){ y += fy;}
  void AddZ(double fz){ z += fz;}
 };
+
+#include "Camera.h"
 
 #endif
