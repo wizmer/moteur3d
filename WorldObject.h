@@ -9,18 +9,23 @@
 #include <vector>
 
 class WorldObject{
+ private:
+  GeomObject* m_GeomObj;
+  Transformation* m_trans;
+  Point3D* m_barycentre;
+  double m_MaxRadius;  
+
  public:
-  std::vector<Polygone*> m_pol;
-  WorldObject(GeomObject* obj,double **rot = NULL, double *trans = NULL, double scale = 1);
+  WorldObject(GeomObject* obj, Transformation* fTrans);
   WorldObject(GeomObject* obj,double Tx,double Ty,double Tz);
   ~WorldObject();
 
   std::vector<std::vector<Point2D*>*>* ProjectWorldObject(Camera* cam);
+  void ComputeBarycentre();
+  void ComputeMaxRadius();
+  void PrintTransfo();
 
- private:
-  Transformation* m_trans;
-  GeomObject* m_obj;
-  
+
 };
 
 #endif

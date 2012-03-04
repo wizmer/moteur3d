@@ -14,11 +14,14 @@ int main(int argc, char *argv[]){
   TApplication app("app", &argc, argv);
   Scene3D* TheScene3D = Scene3D::GetScene3D();
   GeomObject* obj = new GeomObject("Triangle.txt");
-  
-  TheScene3D->AddWorldObject(new WorldObject(obj));
-  TheScene3D->AddWorldObject(new WorldObject(obj,5,0,0));
-  TheScene3D->AddWorldObject(new WorldObject(obj,5,5,0));
-  TheScene3D->AddWorldObject(new WorldObject(obj,0,5,0));
+
+  int N = 2;
+  for(int i = 0;i<N;i++){
+    for(int j = 0;j<N;j++){
+      TheScene3D->AddWorldObject(new WorldObject(obj,5*i,5*j,0));
+    }
+  }
+
 
   Camera* Cam = new Camera(0,-4,0);
 
@@ -28,6 +31,7 @@ int main(int argc, char *argv[]){
 
   TheScene3D -> Project(Cam);
   KeyHandler* key = new KeyHandler(Cam,can);
+
   app.Run();
   return 1;
 

@@ -4,6 +4,8 @@
 #include "Camera.h"
 #include "Scene2D.h"
 
+#include <iostream>
+
 class Camera;
 
 class Scene3D{

@@ -25,12 +25,17 @@ Point3D::~Point3D()
   //In prevision of dynamical allocations.
 }
 
+// Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
+  
+// }
+
 Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
-  double GlobalX = x;
-  double GlobalY = y;
-  double GlobalZ = z;
+  Point3D* GlobalPoint = (*trans -> m_trans) * (*this); 
+
+  double GlobalX = GlobalPoint -> GetX();
+  double GlobalY = GlobalPoint -> GetY();
+  double GlobalZ = GlobalPoint -> GetZ();
   double Phi,Tau;
-  trans->Apply(GlobalX,GlobalY,GlobalZ);
 
   Phi = atan((GlobalX - cam->GetX())/(GlobalY - cam->GetY())) - cam->GetPhi();
   
@@ -46,13 +51,14 @@ Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
   while( Phi > PI) Phi -= 2*PI;
   while( Phi < -PI) Phi += 2*PI;
 
-  print(Phi);
-  print(Tau);
-  print(cam->GetX());
-  print(cam->GetY());
-  print(cam->GetZ());
-  cout << endl;
+  // print(Phi);
+  // print(Tau);
+  // cout << endl;
 
   return new Point2D(Tau,Phi);
 
+}
+
+double Point3D::Distance(Point3D* p){
+  return sqrt((p->GetX() - x)*(p->GetX() - x) + (p->GetY() - y)*(p->GetY() - y) + (p->GetZ() - z)*(p->GetZ() - z));
 }

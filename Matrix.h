@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <math.h>
+#include "Point3D.h"
+
+class Point3D;
 
 class Matrix{
  private:
@@ -13,10 +16,18 @@ class Matrix{
  public:
   Matrix(int fRowSize,int fColumn,double **fMat = NULL);
   Matrix(int fRowAndColumnSize,double **fMat = NULL);
-  void SetRotation(double phi,double theta,double psi);
+  static Matrix* RotationMatrix(double phi = 0,double theta = 0,double psi = 0);
+  static Matrix* TranslationMatrix(double Tx = 0,double Ty = 0,double Tz = 0);
+  static Matrix* ScalingMatrix(double Sx = 0,double Sy = 0,double Sz = 0);
+
   void SetTranslation(double Tx,double Ty,double Tz);
-  void Print();
+  void SetRotation(double Tx,double Ty,double Tz);
+  void Print(const char* str = NULL);
   double Get(int i,int j);
+  Matrix& operator*=(Matrix mat);
+  Matrix* operator*(Matrix mat);
+  Point3D* operator*(Point3D p);
+  void Init();
 
  private:
   void Init(int fRowSize,int fColumn);
