@@ -2,6 +2,7 @@
 #define POINT_H
 
 #include "Point2D.h"
+#include "Transformation.h"
 
 #include <iostream> 
 
@@ -14,7 +15,7 @@ class Point3D{
   Point3D(Point3D* M);
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);
   ~Point3D();
-  Point2D* Project(Camera* cam);
+  Point2D* GetTauPhi(Transformation* trans,Camera* cam);
 
  public:
  double GetX(){return x;}

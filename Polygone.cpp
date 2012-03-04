@@ -37,11 +37,11 @@ Polygone::~Polygone(){
   //in prevision of dynamical allocations
 }
 
-vector<Point2D*>* Polygone::GetTauPhi(Camera* cam){
+vector<Point2D*>* Polygone::GetTauPhi(Transformation* trans,Camera* cam){
   vector<Point2D*> *Vec = new vector<Point2D*>;
   int N = M.size();
   for(int i = 0;i<N;i++){
-    Vec -> push_back(M[i] -> Project(cam));
+    Vec -> push_back(M[i] -> GetTauPhi(trans,cam));
   }
   return Vec;
 }

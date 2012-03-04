@@ -25,16 +25,23 @@ Point3D::~Point3D()
   //In prevision of dynamical allocations.
 }
 
-Point2D* Point3D::Project(Camera* cam){
-  double Tau,Phi;
+Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
+  double GlobalX = x;
+  double GlobalY = y;
+  double GlobalZ = z;
+  double Phi,Tau;
+  trans->Apply(GlobalX,GlobalY,GlobalZ);
 
-  Phi = atan((GetX() - cam->GetX())/(GetY() - cam->GetY())) - cam->GetPhi();
+  Phi = atan((GlobalX - cam->GetX())/(GlobalY - cam->GetY())) - cam->GetPhi();
   
-  if(pow(GetX() - cam->GetX(),2) +pow(GetY() - cam->GetY(),2) != 0)  Tau = atan((GetZ() - cam->GetZ())/sqrt(pow(GetX() - cam->GetX(),2) +pow(GetY() - cam->GetY(),2))) - cam->GetTau();
+  if(pow(GlobalX - cam->GetX(),2) +pow(GlobalY - cam->GetY(),2) != 0)  Tau = atan((GlobalZ - cam->GetZ())/sqrt(pow(GlobalX - cam->GetX(),2) +pow(GlobalY - cam->GetY(),2))) - cam->GetTau();
   else Tau = PI;
 
 
-  if(GetY() -cam->GetY() < 0) Phi += PI;
+  if(GetY() -cam->GetY() < 0){
+    printf("bip");
+    Phi += PI;
+  }
 
   while( Phi > PI) Phi -= 2*PI;
   while( Phi < -PI) Phi += 2*PI;

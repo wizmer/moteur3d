@@ -21,10 +21,16 @@ class Camera{
   void RotateRight(){Phi += StepRotation;}
   void RotateDown(){Tau -= StepRotation;}
   void RotateUp(){Tau += StepRotation;}
-  /* void MoveLeft(){ double x = m_pos->GetX(); m_pos->SetX(x - StepTranslation);} */
-  /* void MoveRight(){ double x = m_pos->GetX(); m_pos->SetX(x - StepTranslation);} */
-  void MoveLeft(){};
-  void MoveRight(){};
+  void MoveLeft(){
+    m_pos -> AddX( -cos(Tau)*cos(Phi)*StepTranslation);
+    m_pos -> AddY( cos(Tau)*sin(Phi)*StepTranslation);
+  };
+
+  void MoveRight(){
+    m_pos -> AddX( cos(Tau)*cos(Phi)*StepTranslation);
+    m_pos -> AddY( -cos(Tau)*sin(Phi)*StepTranslation);
+  };
+
   void MoveBack(){
     m_pos->AddX( -cos(Tau)*sin(Phi)*StepTranslation);
     m_pos->AddY( -cos(Tau)*cos(Phi)*StepTranslation);

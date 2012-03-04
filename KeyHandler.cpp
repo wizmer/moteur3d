@@ -78,7 +78,7 @@ Bool_t KeyHandler::HandleKey(Event_t *event)
 
     int Nboard = Board->GetListOfPrimitives()->GetEntries();
     for(int i = Nboard - 1;i>=0;i--){
-      if(strcmp(Board->GetListOfPrimitives()->At(i)->IsA()->GetName(),"TMarker") == 0) {
+      if(strcmp(Board->GetListOfPrimitives()->At(i)->IsA()->GetName(),"TMarker") == 0 || strcmp(Board->GetListOfPrimitives()->At(i)->IsA()->GetName(),"TLine") == 0) {
 	delete Board->GetListOfPrimitives()->At(i);
       }
     }

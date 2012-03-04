@@ -12,6 +12,7 @@ class WorldObject{
  public:
   std::vector<Polygone*> m_pol;
   WorldObject(GeomObject* obj,double **rot = NULL, double *trans = NULL, double scale = 1);
+  WorldObject(GeomObject* obj,double Tx,double Ty,double Tz);
   ~WorldObject();
 
   std::vector<std::vector<Point2D*>*>* ProjectWorldObject(Camera* cam);

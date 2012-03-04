@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Point3D.h"
 #include "Point2D.h"
+#include "Transformation.h"
 
 #include <vector>
 #include <iostream>
@@ -20,7 +21,7 @@ class Polygone{
   Polygone(Polygone* surf);
   void UpdateBarycentre();
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);
-  std::vector<Point2D*>* GetTauPhi(Camera* cam);
+  std::vector<Point2D*>* GetTauPhi(Transformation* trans,Camera* cam);
   ~Polygone();
 };
 
