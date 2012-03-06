@@ -75,7 +75,8 @@ Bool_t KeyHandler::HandleKey(Event_t *event)
     //   Obj[i]->DoTauPhi();
     //   Obj[i]->Draw();
     // }
-
+    
+    Pos->Moving();
     int Nboard = Board->GetListOfPrimitives()->GetEntries();
     for(int i = Nboard - 1;i>=0;i--){
       if(strcmp(Board->GetListOfPrimitives()->At(i)->IsA()->GetName(),"TMarker") == 0 || strcmp(Board->GetListOfPrimitives()->At(i)->IsA()->GetName(),"TLine") == 0) {

@@ -16,9 +16,10 @@ void Point3D::ApplyMatrices(double Rot[3][3],double Trans[3]){
   }
 }
 
- Point3D::Point3D(Point3D* M):x((*M).x),y((*M).y),z((*M).z){
+ Point3D::Point3D(Point3D* M):x(M->x),y(M->y),z(M->z){
    //  ApplyMatrices(rot,trans);
 }
+
 
 Point3D::~Point3D()
 {
@@ -32,33 +33,80 @@ Point3D::~Point3D()
 Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
   Point3D* GlobalPoint = (*trans -> m_trans) * (*this); 
 
-  double GlobalX = GlobalPoint -> GetX();
-  double GlobalY = GlobalPoint -> GetY();
-  double GlobalZ = GlobalPoint -> GetZ();
-  double Phi,Tau;
-
-  Phi = atan((GlobalX - cam->GetX())/(GlobalY - cam->GetY())) - cam->GetPhi();
+  GlobalPoint -> Print("glob");
+  Point3D* CameraRefPoint = cam -> GetPointInCameraRef(GlobalPoint);
   
-  if(pow(GlobalX - cam->GetX(),2) +pow(GlobalY - cam->GetY(),2) != 0)  Tau = atan((GlobalZ - cam->GetZ())/sqrt(pow(GlobalX - cam->GetX(),2) +pow(GlobalY - cam->GetY(),2))) - cam->GetTau();
-  else Tau = PI;
+  CameraRefPoint -> Print("ref");
+  if( CameraRefPoint -> y > 0){
+    double r = sqrt(CameraRefPoint -> y * CameraRefPoint -> y + CameraRefPoint -> x * CameraRefPoint -> x);
+    double rho = sqrt(CameraRefPoint -> y * CameraRefPoint -> y + CameraRefPoint -> x * CameraRefPoint -> x + CameraRefPoint -> z * CameraRefPoint -> z);
+    double Phi = atan(CameraRefPoint -> x / CameraRefPoint -> y);
+    double Tau = atan(CameraRefPoint -> z / r );
 
+    // double Theta = acos(r/rho);
+    // double Alpha;
+    // if(CameraRefPoint -> x == 0){
+    //   if(CameraRefPoint -> z >= 0) Alpha = PI / 2.;
+    //   else Alpha = - PI / 2.;
+    // }else Alpha = atan(CameraRefPoint -> z / CameraRefPoint -> x);
 
-  if(GetY() -cam->GetY() < 0){
-    printf("bip");
-    Phi += PI;
+    // double Phi = Theta * cos(Alpha);
+    // double Tau = Theta * sin(Alpha);
+    
+    return new Point2D(Tau,Phi);
+    delete GlobalPoint;
+    delete CameraRefPoint;
   }
 
-  while( Phi > PI) Phi -= 2*PI;
-  while( Phi < -PI) Phi += 2*PI;
+  delete GlobalPoint;
+  delete CameraRefPoint;
 
-  // print(Phi);
-  // print(Tau);
-  // cout << endl;
-
-  return new Point2D(Tau,Phi);
-
+  return NULL;
 }
+
+// Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
+//   Point3D* GlobalPoint = (*trans -> m_trans) * (*this); 
+
+//   double GlobalX = GlobalPoint -> GetX();
+//   double GlobalY = GlobalPoint -> GetY();
+//   double GlobalZ = GlobalPoint -> GetZ();
+//   double Phi,Tau;
+
+//   Phi = atan((GlobalX - cam->GetX())/(GlobalY - cam->GetY())) - cam->GetPhi();
+  
+//   if(pow(GlobalX - cam->GetX(),2) +pow(GlobalY - cam->GetY(),2) != 0)  Tau = atan((GlobalZ - cam->GetZ())/sqrt(pow(GlobalX - cam->GetX(),2) +pow(GlobalY - cam->GetY(),2))) - cam->GetTau();
+//   //  if(pow(GlobalX - cam->GetX(),2) +pow(GlobalY - cam->GetY(),2) != 0)  Tau = atan((GlobalZ - cam->GetZ())/sqrt(pow(GlobalY - cam->GetY(),2) )) - cam->GetTau();
+//   else Tau = PI;
+
+
+//   if(GetY() -cam->GetY() < 0){
+//     printf("bip");
+//     Phi += PI;
+//   }
+
+//   while( Phi > PI) Phi -= 2*PI;
+//   while( Phi < -PI) Phi += 2*PI;
+
+//   // print(Phi);
+//   // print(Tau);
+//   // cout << endl;
+
+//   return new Point2D(Tau,Phi);
+
+// }
 
 double Point3D::Distance(Point3D* p){
   return sqrt((p->GetX() - x)*(p->GetX() - x) + (p->GetY() - y)*(p->GetY() - y) + (p->GetZ() - z)*(p->GetZ() - z));
+}
+
+void Point3D::Print(const char* str){
+  if(str) cout << str << " ";
+  cout << "Point3D is : ("<< x << "," << y << "," << z << ")" << endl;
+    
+}
+
+void Point3D::Subtract(Point3D* p){
+  x -= p -> x;
+  y -= p -> y;
+  z -= p -> z;
 }

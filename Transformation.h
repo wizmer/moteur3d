@@ -17,6 +17,7 @@ class Transformation{
   void Apply(double &x,double &y,double &z);
   Point3D* Apply(Point3D* p);
   void SetTranslation(double Tx,double Ty,double Tz);
+  void SetRotation(double Tx,double Ty,double Tz);
   void ComputeFinalTransfo();
   void Print();
 };

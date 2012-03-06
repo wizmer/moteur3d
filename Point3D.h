@@ -24,6 +24,8 @@ class Point3D{
     if(i == 1) return y;
     if(i == 2) return z;
   }
+
+  void Print(const char* str = NULL);
  double GetX(){return x;}
  double GetY(){return y;}
  double GetZ(){return z;}
@@ -33,6 +35,7 @@ class Point3D{
  void SetY(double fy){y = fy;}
  void SetZ(double fz){z = fz;}
 
+ void Subtract(Point3D* p);
  void AddXYZ(double fx,double fy,double fz){x += fx; y += fy; z += fz;}
  void AddXYZ(Point3D* p){AddXYZ(p -> x, p -> y, p -> z);}
  void AddX(double fx){ x += fx;}

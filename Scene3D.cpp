@@ -21,8 +21,10 @@ void Scene3D::Project(Camera* cam){
   Scene2D* TheScene2D = Scene2D::GetScene2D();
   int N = m_wobj.size();
   for(int i = 0;i<N;i++){
-    cout << "///////////////" << endl << endl;
-    m_wobj[i] ->  PrintTransfo();
+    // cout << "///////////////" << endl << endl;
+    // m_wobj[i] ->  PrintTransfo();
     TheScene2D -> ProjectWorldObject(m_wobj[i],cam);
   }
+  cam-> Print();
 }
+

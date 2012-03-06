@@ -55,6 +55,11 @@ void Transformation::SetTranslation(double Tx,double Ty,double Tz){
   m_trans -> SetTranslation(Tx,Ty,Tz);
 }
 
+void Transformation::SetRotation(double Tx,double Ty,double Tz){
+  cout << "Transformation::SetRotation"  << endl;
+  m_rot -> SetRotation(Tx,Ty,Tz);
+}
+
 void Transformation::ComputeFinalTransfo(){
   m_FinalTransfo -> Init();
   (*m_FinalTransfo) *= (*m_trans);

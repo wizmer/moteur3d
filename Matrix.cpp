@@ -79,25 +79,27 @@ void Matrix::SetTranslation(double Tx,double Ty,double Tz){
   cout << "end Matri::SetTranslation" << endl;
 }
 
-void Matrix::SetRotation(double phi,double theta,double psi){
+void Matrix::SetRotation(double Rx,double Ry,double Rz){
   if(m_ColumnSize != 4 || m_RowSize != 4){
     cout << "error not a 4*4 matrix" << endl;
     exit(-1);
   }
 
-  m_mat[0][0] = cos(theta) * cos(psi);
-  m_mat[0][1] = cos(phi) * sin(psi) + sin(phi) * sin(theta) * cos(psi);
-  m_mat[0][2] = sin(phi) * sin(psi) + cos(phi) * sin(theta) * cos(psi);
+  double phi = Rz;
+  double tau = Rx;
+  m_mat[0][0] = cos(phi);
+  m_mat[0][1] = - sin(phi) * cos(tau);
+  m_mat[0][2] = sin(phi) * sin(tau);
   m_mat[0][3] = 0;
 
-  m_mat[1][0] = cos(theta) * sin(psi);
-  m_mat[1][1] = cos(phi) * cos(psi) + sin(phi) * sin(theta) * sin(psi);
-  m_mat[1][2] = -sin(phi) * cos(psi) + cos(phi) * sin(theta) * sin(psi);
+  m_mat[1][0] = sin(phi);
+  m_mat[1][1] = cos(phi) * cos(tau);
+  m_mat[1][2] = - cos(phi) * sin(tau);
   m_mat[1][3] = 0;
 
-  m_mat[2][0] = -sin(theta);
-  m_mat[2][1] = sin(phi) * cos(theta);
-  m_mat[2][2] = cos(phi) * cos(theta);
+  m_mat[2][0] = 0;
+  m_mat[2][1] = sin(tau);
+  m_mat[2][2] = cos(tau);
   m_mat[2][3] = 0;
 
   m_mat[3][0] = 0;

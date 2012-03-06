@@ -1,5 +1,6 @@
 #include "Scene2D.h"
 
+#define print(token) cout << #token << " : " << token << endl
 using namespace std;
 
 Scene2D* Scene2D::m_manager = 0;
@@ -29,10 +30,13 @@ void Scene2D::ProjectWorldObject(WorldObject* obj, Camera* cam){
       // 	cout << (*(*Vec)[i])[j] << endl;
       // 	mark->DrawMarker((*(*Vec)[i])[j]->phi,(*(*Vec)[i])[j]->tau);
       // }
+
       line -> SetLineColor(col++);
-      line->DrawLine((*(*Vec)[i])[0]->phi,(*(*Vec)[i])[0]->tau,(*(*Vec)[i])[1]->phi,(*(*Vec)[i])[1]->tau);
-      line->DrawLine((*(*Vec)[i])[0]->phi,(*(*Vec)[i])[0]->tau,(*(*Vec)[i])[2]->phi,(*(*Vec)[i])[2]->tau);
-      line->DrawLine((*(*Vec)[i])[2]->phi,(*(*Vec)[i])[2]->tau,(*(*Vec)[i])[1]->phi,(*(*Vec)[i])[1]->tau);
+      if((*(*Vec)[i])[0] && (*(*Vec)[i])[1] && (*(*Vec)[i])[2]){
+	line->DrawLine((*(*Vec)[i])[0]->phi,(*(*Vec)[i])[0]->tau,(*(*Vec)[i])[1]->phi,(*(*Vec)[i])[1]->tau);
+	line->DrawLine((*(*Vec)[i])[0]->phi,(*(*Vec)[i])[0]->tau,(*(*Vec)[i])[2]->phi,(*(*Vec)[i])[2]->tau);
+	line->DrawLine((*(*Vec)[i])[2]->phi,(*(*Vec)[i])[2]->tau,(*(*Vec)[i])[1]->phi,(*(*Vec)[i])[1]->tau);
+      }
     }
     delete Vec;
   }
