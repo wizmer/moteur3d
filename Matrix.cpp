@@ -88,17 +88,17 @@ void Matrix::SetRotation(double Rx,double Ry,double Rz){
   double phi = Rz;
   double tau = Rx;
   m_mat[0][0] = cos(phi);
-  m_mat[0][1] = - sin(phi) * cos(tau);
-  m_mat[0][2] = sin(phi) * sin(tau);
+  m_mat[0][1] = - sin(phi);
+  m_mat[0][2] = 0;
   m_mat[0][3] = 0;
 
-  m_mat[1][0] = sin(phi);
-  m_mat[1][1] = cos(phi) * cos(tau);
-  m_mat[1][2] = - cos(phi) * sin(tau);
+  m_mat[1][0] = cos(tau) * sin(phi);
+  m_mat[1][1] = cos(tau) * cos(phi);
+  m_mat[1][2] = - sin(tau);
   m_mat[1][3] = 0;
 
-  m_mat[2][0] = 0;
-  m_mat[2][1] = sin(tau);
+  m_mat[2][0] = sin(phi) * sin(tau);
+  m_mat[2][1] = sin(tau) * cos(phi);
   m_mat[2][2] = cos(tau);
   m_mat[2][3] = 0;
 

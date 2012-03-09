@@ -18,6 +18,7 @@ class Polygone{
 
  public:
   Polygone(double,double,double,double,double,double,double,double,double);
+  Polygone(Point3D* p1,Point3D* p2,Point3D* p3);
   Polygone(Polygone* surf);
   void UpdateBarycentre();
   void ApplyMatrices(double Rot[3][3], double Trans[3] = NULL);

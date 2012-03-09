@@ -33,15 +33,16 @@ Point3D::~Point3D()
 Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
   Point3D* GlobalPoint = (*trans -> m_trans) * (*this); 
 
-  GlobalPoint -> Print("glob");
+  //  GlobalPoint -> Print("glob");
   Point3D* CameraRefPoint = cam -> GetPointInCameraRef(GlobalPoint);
-  
-  CameraRefPoint -> Print("ref");
+//  CameraRefPoint -> Print("ref");
+
   if( CameraRefPoint -> y > 0){
     double r = sqrt(CameraRefPoint -> y * CameraRefPoint -> y + CameraRefPoint -> x * CameraRefPoint -> x);
     double rho = sqrt(CameraRefPoint -> y * CameraRefPoint -> y + CameraRefPoint -> x * CameraRefPoint -> x + CameraRefPoint -> z * CameraRefPoint -> z);
     double Phi = atan(CameraRefPoint -> x / CameraRefPoint -> y);
-    double Tau = atan(CameraRefPoint -> z / r );
+        double Tau = atan(CameraRefPoint -> z / CameraRefPoint -> y);
+    //    double Tau = acos(r / rho);
 
     // double Theta = acos(r/rho);
     // double Alpha;

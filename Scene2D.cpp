@@ -31,7 +31,7 @@ void Scene2D::ProjectWorldObject(WorldObject* obj, Camera* cam){
       // 	mark->DrawMarker((*(*Vec)[i])[j]->phi,(*(*Vec)[i])[j]->tau);
       // }
 
-      line -> SetLineColor(col++);
+      //      line -> SetLineColor(col++);
       if((*(*Vec)[i])[0] && (*(*Vec)[i])[1] && (*(*Vec)[i])[2]){
 	line->DrawLine((*(*Vec)[i])[0]->phi,(*(*Vec)[i])[0]->tau,(*(*Vec)[i])[1]->phi,(*(*Vec)[i])[1]->tau);
 	line->DrawLine((*(*Vec)[i])[0]->phi,(*(*Vec)[i])[0]->tau,(*(*Vec)[i])[2]->phi,(*(*Vec)[i])[2]->tau);

@@ -3,9 +3,9 @@
 #define print(token) cout << #token << "\t" << token << endl
 using namespace std;
 
-const double Camera::StepPhi = 0.05;
-const double Camera::StepTau = 0.05;
-const double Camera::StepTranslation = 0.1;
+const double Camera::StepPhi = 0.3;
+const double Camera::StepTau = 0.3;
+const double Camera::StepTranslation = 50;
 
 Camera::Camera(double Tx,double Ty,double Tz,double Rx,double Ry,double Rz){
   m_M = new Point3D(Tx,Ty,Tz);
