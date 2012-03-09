@@ -1,21 +1,16 @@
 #include "Scene3D.h"
-#include "KeyHandler.h"
-
-#include "TCanvas.h"
-#include "TH2D.h"
-#include "TApplication.h"
-#include "TMath.h"
+#include "X11Display.h"
 
 #include <iostream>
 
+#define PI 3.14159265358979312
 #define print(token) cout << #token << " : " << token << endl
 using namespace std;
 
 int main(int argc, char *argv[]){
-  TApplication app("app", &argc, argv);
   Scene3D* TheScene3D = Scene3D::GetScene3D();
-  //  GeomObject* obj = new GeomObject("cube.ply");
-  GeomObject* obj = new GeomObject("vadertie.ply");
+  GeomObject* obj = new GeomObject("spaceship.ply");
+  //GeomObject* obj = new GeomObject("vadertie.ply");
 
   int N = 1;
   for(int i = 0;i<N;i++){
@@ -25,19 +20,11 @@ int main(int argc, char *argv[]){
   }
 
 
-  cout << "cam"  << endl;
-  Camera* Cam = new Camera(0,-300,0);
-  cout << "cam end"  << endl;
 
-  TCanvas* can = new TCanvas("can","can",400,50,800,600);
-  
-  TH2D* h = new TH2D("h","h;Phi(rad);Tau(rad)",100,-40/180.*TMath::Pi(),40/180.*TMath::Pi(),100,-20/180.*TMath::Pi(),30/180.*TMath::Pi());
-  h->Draw("a");
+  Camera* Cam = new Camera(0,-30,0);
 
-  TheScene3D -> Project(Cam);
-  KeyHandler* key = new KeyHandler(Cam,can);
+  X11Display::GetX11Display(Cam);
 
-  app.Run();
+  X11Display::GetX11Display() -> Run();
   return 1;
-
 }

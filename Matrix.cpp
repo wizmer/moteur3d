@@ -145,7 +145,7 @@ Matrix* Matrix::ScalingMatrix(double Sx,double Sy,double Sz){
 
   Matrix* mat = new Matrix(4,array);
   
-  for(int i = 0;i<4;i++) delete array[i];
+  for(int i = 0;i<4;i++) delete[] array[i];
   delete[] array;
   return mat;
 }
@@ -199,6 +199,8 @@ Matrix& Matrix::operator*=(Matrix mat){
   }
 
   for(int i = 0;i<m_RowSize;i++) for(int j = 0;j<m_ColumnSize;j++) m_mat[i][j] = array[i*m_ColumnSize + j];
+
+  delete[] array;
   
   return *this;
 }

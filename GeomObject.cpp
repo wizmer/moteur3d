@@ -23,16 +23,22 @@ GeomObject::GeomObject(const char* NameFile){
 
   for(int i = 0;i<N;i++){
     f >> x >> y >> z >> u >> v >> w;
-    cout << x << "\t" << y << "\t" << z << "\t" << u << "\t" << v << "\t" << w << endl;
+    //   cout << x << "\t" << y << "\t" << z << "\t" << u << "\t" << v << "\t" << w << endl;
     Vec.push_back(new Point3D(x,y,z));
   }
   
 
   cout << "nface : " << Nface << endl;
   double trash;
-  int Npoint,p1,p2,p3;
+  int Npoint,p1,p2,p3,p;
   for(int i = 0;i<Nface;i++){
-    f >> Npoint >> p1 >> p2 >> p3;
+    f >> Npoint;
+    for(int k = 0;k<Npoint;k++){
+      f >> p;
+      if(k == 0) p1 = p;
+      if(k == 1) p2 = p;
+      if(k == 2) p3 = p;
+    }
     m_pol.push_back(new Polygone(Vec[p1],Vec[p2],Vec[p3]));
   }
   

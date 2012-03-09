@@ -19,6 +19,8 @@ void Scene3D::AddWorldObject(WorldObject* obj){
 
 void Scene3D::Project(Camera* cam){
   Scene2D* TheScene2D = Scene2D::GetScene2D();
+  X11Display::GetX11Display() -> Flush();
+
   int N = m_wobj.size();
   for(int i = 0;i<N;i++){
     // cout << "///////////////" << endl << endl;

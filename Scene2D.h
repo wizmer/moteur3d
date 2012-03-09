@@ -3,8 +3,7 @@
 
 #include "WorldObject.h"
 #include "Point2D.h"
-#include "TMarker.h"
-#include "TLine.h"
+#include "X11Display.h"
 
 #include <vector>
 

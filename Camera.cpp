@@ -3,9 +3,9 @@
 #define print(token) cout << #token << "\t" << token << endl
 using namespace std;
 
-const double Camera::StepPhi = 0.3;
-const double Camera::StepTau = 0.3;
-const double Camera::StepTranslation = 50;
+const double Camera::StepPhi = 0.05;
+const double Camera::StepTau = 0.05;
+const double Camera::StepTranslation = 4;
 
 Camera::Camera(double Tx,double Ty,double Tz,double Rx,double Ry,double Rz){
   m_M = new Point3D(Tx,Ty,Tz);
@@ -14,6 +14,7 @@ Camera::Camera(double Tx,double Ty,double Tz,double Rx,double Ry,double Rz){
   cout << "new transfo" << endl;
   //  m_rot = new Transformation(Rx,Ry,Rz,Tx,Ty,Tz);
   m_rot = new Matrix(4);
+  m_rot -> SetRotation(-m_tau,0,m_phi);
 }
 
 Camera::~Camera(){
@@ -41,12 +42,12 @@ void Camera::RotateRight(){
 }
 
 void Camera::RotateUp(){
-  m_tau += StepTau;
+  m_tau -= StepTau;
   m_rot -> SetRotation(-m_tau,0,m_phi);
 }
 
 void Camera::RotateDown(){
-  m_tau -= StepTau;
+  m_tau += StepTau;
   m_rot -> SetRotation(-m_tau,0,m_phi);
 }
 
@@ -72,29 +73,6 @@ void Camera::MoveRight(){
   m_M -> y -= sin(m_phi) * StepTranslation;
 }
 
-// void Camera::MoveUp(){
-//   Matrix *mat = (*m_rot -> m_rot) * (*TranslationUp);
-//   (*(m_rot -> m_trans)) *= (*mat);
-//   delete mat;
-// }
-
-// void Camera::MoveBack(){
-//   Matrix *mat = (*m_rot -> m_rot) * (*TranslationBack);
-//   (*(m_rot -> m_trans)) *= (*mat);
-//   delete mat;
-// }
-
-// void Camera::MoveLeft(){
-//   Matrix *mat = (*m_rot -> m_rot) * (*TranslationLeft);
-//   (*(m_rot -> m_trans)) *= (*mat);
-//   delete mat;
-// }
-
-// void Camera::MoveRight(){
-//   Matrix *mat = (*m_rot -> m_rot) * (*TranslationRight);
-//   (*(m_rot -> m_trans)) *= (*mat);
-//   delete mat;
-// }
 
 void Camera::Moving(){
   // For future use, is called when camera is moving
