@@ -26,16 +26,9 @@ Point3D::~Point3D()
   //In prevision of dynamical allocations.
 }
 
-// Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
-  
-// }
-
 Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
   Point3D* GlobalPoint = (*trans -> m_trans) * (*this); 
-
-
   Point3D* CameraRefPoint = cam -> GetPointInCameraRef(GlobalPoint);
-
 
   if( CameraRefPoint -> y > 0){
     double r = sqrt(CameraRefPoint -> y * CameraRefPoint -> y + CameraRefPoint -> x * CameraRefPoint -> x);
@@ -43,9 +36,9 @@ Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
     double Phi = atan(CameraRefPoint -> x / CameraRefPoint -> y);
     double Tau = atan(CameraRefPoint -> z / CameraRefPoint -> y);
     
-    return new Point2D(Tau,Phi);
     delete GlobalPoint;
     delete CameraRefPoint;
+    return new Point2D(Tau,Phi);
   }
 
   delete GlobalPoint;
