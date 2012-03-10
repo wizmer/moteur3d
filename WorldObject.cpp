@@ -32,9 +32,21 @@ WorldObject::~WorldObject(){
 vector<vector<Point2D*>*>* WorldObject::ProjectWorldObject(Camera* cam){
   vector<vector<Point2D*>*> *Vec = new vector<vector<Point2D*>*>;
   int N = m_GeomObj -> m_pol.size();
-  for(int i = 0;i<N;i++){
-    Vec -> push_back(m_GeomObj -> m_pol[i] -> GetTauPhi(m_trans,cam));
+  
+  vector<Point2D*>** p = new vector<Point2D*>*[N * 3];
+  int i = 0;
+  int chunk = N / 10;
+#pragma omp parallel shared(Vec,cam) private(i)
+  {
+#pragma omp for schedule(guided)
+    for(i = 0;i<N;i++){
+      p[i] = m_GeomObj -> m_pol[i] -> GetTauPhi(m_trans,cam);
+    }
   }
+
+  for(i = 0;i<N;i++)  Vec -> push_back(p[i]);
+  delete[] p;
+  cout << "Out" << endl;
   return Vec;
 }
 

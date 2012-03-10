@@ -19,7 +19,9 @@ void Scene2D::ProjectWorldObject(WorldObject* obj, Camera* cam){
   int col = 1;
   if(Vec){
     int Npol = Vec->size();
+
     for(int i = 0;i<Npol;i++){
+      printf("%i\n",i);
       int Npoint = (*Vec)[i] -> size();
       if((*(*Vec)[i])[0] && (*(*Vec)[i])[1] && (*(*Vec)[i])[2]){
 	X11Display::GetX11Display() -> Update((*(*Vec)[i])[0] -> phi,(*(*Vec)[i])[0] -> tau,(*(*Vec)[i])[1] -> phi,(*(*Vec)[i])[1] -> tau);
@@ -29,6 +31,7 @@ void Scene2D::ProjectWorldObject(WorldObject* obj, Camera* cam){
     }
   }
 
+  cout << "second part" << endl;
   if(Vec){
     int Npol = Vec->size();
     for(int i = 0;i<Npol;i++){
@@ -38,7 +41,8 @@ void Scene2D::ProjectWorldObject(WorldObject* obj, Camera* cam){
       if((*(*Vec)[i])[2]) delete (*(*Vec)[i])[2];
 
       if((*Vec)[i]) delete (*Vec)[i];
-      }
+    }
     delete Vec;
   }
 }
+
