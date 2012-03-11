@@ -34,7 +34,8 @@ class X11Display
   void Update(double x1,double y1,double x2,double y2);
   void Run();
   void Flush();
-
+  void setPixel(int x,int y);
+  void lineBresenham(int p1x, int p1y, int p2x, int p2y);
 };
 
 #endif

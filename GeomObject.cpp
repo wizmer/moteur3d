@@ -3,6 +3,13 @@
 using namespace std;
 
 GeomObject::GeomObject(const char* NameFile){
+  string a(NameFile);
+  size_t found = a.find_last_of('.');
+  if(strcmp(NameFile + found + 1,"ply") == 0)  InitBlender(NameFile);
+  else if (strcmp(NameFile + found + 1,"txt") == 0) InitTextFile(NameFile);
+}
+
+void GeomObject::InitBlender(const char* NameFile){
   vector<Point3D*> Vec;
   ifstream f(NameFile);
   char name[256];
@@ -47,19 +54,19 @@ GeomObject::GeomObject(const char* NameFile){
   }
 }
 
-// GeomObject::GeomObject(const char* NameFile){
-//   ifstream f(NameFile);
-//   if(f.is_open()){
-//     double x1,y1,z1,x2,y2,z2,x3,y3,z3;
-//     while(!f.eof()){
-//       f >> x1 >> y1 >> z1 >> x2 >> y2 >> z2 >> x3 >> y3 >> z3;
-//       m_pol.push_back(new Polygone(x1,y1,z1,x2,y2,z2,x3,y3,z3));
-//     }
-//     m_pol.pop_back();
-//   }else{
-//     cout << "File : " << NameFile << " not found !" << endl;
-//   }
-// }
+void GeomObject::InitTextFile(const char* NameFile){
+  ifstream f(NameFile);
+  if(f.is_open()){
+    double x1,y1,z1,x2,y2,z2,x3,y3,z3;
+    while(!f.eof()){
+      f >> x1 >> y1 >> z1 >> x2 >> y2 >> z2 >> x3 >> y3 >> z3;
+      m_pol.push_back(new Polygone(x1,y1,z1,x2,y2,z2,x3,y3,z3));
+    }
+    m_pol.pop_back();
+  }else{
+    cout << "File : " << NameFile << " not found !" << endl;
+  }
+}
 
 void GeomObject::ApplyMatrices(double Rot[3][3],double Trans[3]){
   int N = m_pol.size();

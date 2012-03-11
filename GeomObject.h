@@ -13,6 +13,8 @@ class GeomObject{
   void ApplyMatrices(double Rot[3][3],double Trans[3]);
   //  virtual void Interact();
   //  void Show();
+  void InitTextFile(const char* NameFile);
+  void InitBlender(const char* NameFile);
   std::vector<Polygone*> m_pol;
 
   ~GeomObject();
