@@ -46,7 +46,6 @@ vector<vector<Point2D*>*>* WorldObject::ProjectWorldObject(Camera* cam){
 
   for(i = 0;i<N;i++)  Vec -> push_back(p[i]);
   delete[] p;
-  cout << "Out" << endl;
   return Vec;
 }
 

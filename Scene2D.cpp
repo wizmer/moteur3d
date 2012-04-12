@@ -30,7 +30,6 @@ void Scene2D::ProjectWorldObject(WorldObject* obj, Camera* cam){
     }
   }
 
-  cout << "second part" << endl;
   if(Vec){
     int Npol = Vec->size();
     for(int i = 0;i<Npol;i++){

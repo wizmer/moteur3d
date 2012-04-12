@@ -54,9 +54,11 @@ void X11Display::Run(){
   XSelectInput(m_Display,m_Win,m_eventMask); // override prev
   KeySym ks;
   do{
+    cout << "Do!!" << endl;
+    cout << "waite" << endl;
     XNextEvent( m_Display, &m_event );   // calls XFlush()
     ks = XKeycodeToKeysym(m_Display, m_event.xkey.keycode,0);
-
+    cout << "here" << endl;
     if(ks){
       if(strcmp(XKeysymToString(ks),"a") == 0){
 	m_Camera->MoveLeft();
