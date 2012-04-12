@@ -9,9 +9,10 @@ using namespace std;
 
 int main(int argc, char *argv[]){
   Scene3D* TheScene3D = Scene3D::GetScene3D();
-  //GeomObject* obj = new GeomObject("spaceship.ply");
+  //  GeomObject* obj = new GeomObject("spaceship.ply");
   //  GeomObject* obj = new GeomObject("vadertie.ply");
   GeomObject* obj = new GeomObject("Cube.txt");
+  //  GeomObject* obj = new GeomObject("LightVadertie.ply");
 
   int N = 10;
   for(int i = 0;i<N;i++){

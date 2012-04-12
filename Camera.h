@@ -30,10 +30,12 @@ class Camera{
   void RotateDown();
   void RotateUp();
 
-  void MoveUp();
-  void MoveBack();
-  void MoveLeft();
-  void MoveRight();
+  void MoveUp(double step);
+  void MoveDown(double step);
+  void MoveForward(double step = StepTranslation);
+  void MoveBack(double step = StepTranslation);
+  void MoveLeft(double step = StepTranslation);
+  void MoveRight(double step = StepTranslation);
   void Moving();
   Point3D* GetPointInCameraRef(Point3D* p);
 

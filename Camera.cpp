@@ -51,28 +51,39 @@ void Camera::RotateDown(){
   m_rot -> SetRotation(-m_tau,0,m_phi);
 }
 
-void Camera::MoveUp(){
-  m_M -> x += sin(m_phi) * cos(m_tau) * StepTranslation;
-  m_M -> y += cos(m_phi) * cos(m_tau) * StepTranslation;
-  m_M -> z += sin(m_tau) * StepTranslation;
+void Camera::MoveForward(double step){
+  m_M -> x += sin(m_phi) * cos(m_tau) * step;
+  m_M -> y += cos(m_phi) * cos(m_tau) * step;
+  m_M -> z += sin(m_tau) * step;
 }
 
-void Camera::MoveBack(){
-  m_M -> x -= sin(m_phi) * cos(m_tau) * StepTranslation;
-  m_M -> y -= cos(m_phi) * cos(m_tau) * StepTranslation;
-  m_M -> z -= sin(m_tau) * StepTranslation;
+void Camera::MoveBack(double step){
+  m_M -> x -= sin(m_phi) * cos(m_tau) * step;
+  m_M -> y -= cos(m_phi) * cos(m_tau) * step;
+  m_M -> z -= sin(m_tau) * step;
 }
 
-void Camera::MoveLeft(){
-  m_M -> x += - cos(m_phi) * StepTranslation;
-  m_M -> y += sin(m_phi) * StepTranslation;
+void Camera::MoveLeft(double step){
+  m_M -> x += - cos(m_phi) * step;
+  m_M -> y += sin(m_phi) * step;
 }
 
-void Camera::MoveRight(){
-  m_M -> x -= - cos(m_phi) * StepTranslation;
-  m_M -> y -= sin(m_phi) * StepTranslation;
+void Camera::MoveRight(double step){
+  m_M -> x -= - cos(m_phi) * step;
+  m_M -> y -= sin(m_phi) * step;
 }
 
+void Camera::MoveUp(double step){
+  m_M -> x -= sin(m_phi) * cos(m_tau) * step;
+  m_M -> y += cos(m_phi) * cos(m_tau) * step;
+  m_M -> z += cos(m_tau) * step;
+}
+
+void Camera::MoveDown(double step){
+  m_M -> x += sin(m_phi) * cos(m_tau) * step;
+  m_M -> y -= cos(m_phi) * cos(m_tau) * step;
+  m_M -> z -= cos(m_tau) * step;
+}
 
 void Camera::Moving(){
   // For future use, is called when camera is moving
