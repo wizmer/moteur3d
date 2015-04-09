@@ -1,9 +1,11 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include <cstdlib>
 #include <iostream>
 #include <math.h>
 #include "Point3D.h"
+
 
 class Point3D;
 

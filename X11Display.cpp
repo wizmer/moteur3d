@@ -3,8 +3,6 @@
 X11Display* X11Display::m_X11 = NULL;
 #define PI 3.14159265358979312
 
-using namespace cv;
-using namespace std;
 
 Mat image;
 
@@ -45,13 +43,13 @@ void onMouse( int event, int x, int y, int, void* )
 
 void help()
 {
-    cout << "\nThis is a demo that shows mean-shift based tracking\n"
+    std::cout << "\nThis is a demo that shows mean-shift based tracking\n"
 			"You select a color objects such as your face and it tracks it.\n"
 			"This reads from video camera (0 by default, or the camera number the user enters\n"
 			"Usage: \n"
             "	./camshiftdemo [camera number]\n";
 
-    cout << "\n\nHot keys: \n"
+    std::cout << "\n\nHot keys: \n"
 			"\tESC - quit the program\n"
 			"\tc - stop the tracking\n"
 			"\tb - switch to/from backprojection view\n"
@@ -134,8 +132,8 @@ int X11Display::AugmentedReality(){
     if( !cap.isOpened() )
     {
     	help();
-        cout << "***Could not initialize capturing...***\n";
-        cout << "Current parameter's value: \n";
+        std::cout << "***Could not initialize capturing...***\n";
+        std::cout << "Current parameter's value: \n";
 		parser.printParams();
         return -1;
     }
@@ -219,7 +217,7 @@ int X11Display::AugmentedReality(){
                 if( backprojMode )
                     cvtColor( backproj, image, CV_GRAY2BGR );
                 ellipse( image, trackBox, Scalar(0,0,255), 3, CV_AA );
-		//		cout << trackWindow.x << "\t" << trackWindow.y << endl;
+		//		std::cout << trackWindow.x << "\t" << trackWindow.y << std::endl;
 		if(trackWindow.x > Xmax) Xmax = trackWindow.x;
 		if(trackWindow.x < Xmin) Xmin = trackWindow.x;
 		if(trackWindow.y > Ymax) Ymax = trackWindow.y;
@@ -234,10 +232,10 @@ int X11Display::AugmentedReality(){
 		OldY = trackWindow.y;
 		OldSize = Size;
 		
-		cout << "trackWindow.width : " << trackWindow.width << endl;
-		cout << "trackWindow.height : " << trackWindow.height << endl;
-		cout << "r : " << CurrentR << endl;
-		cout << "("<< Xmin << "," << Xmax << ")  -  (" << Ymin << "," << Ymax << ")" << endl;
+		std::cout << "trackWindow.width : " << trackWindow.width << std::endl;
+		std::cout << "trackWindow.height : " << trackWindow.height << std::endl;
+		std::cout << "r : " << CurrentR << std::endl;
+		std::cout << "("<< Xmin << "," << Xmax << ")  -  (" << Ymin << "," << Ymax << ")" << std::endl;
             }
         }
         else if( trackObject < 0 )
@@ -252,8 +250,8 @@ int X11Display::AugmentedReality(){
         imshow( "CamShift Demo", image );
         imshow( "Histogram", histimg );
 
-	cout << "HeadX : " << HeadX << endl;
-	cout << "HeadY : " << HeadY << endl;
+	std::cout << "HeadX : " << HeadX << std::endl;
+	std::cout << "HeadY : " << HeadY << std::endl;
 	m_Camera->MoveLeft(HeadX);
 	m_Camera->MoveUp(HeadY);
 	//	m_Camera->MoveForward(HeadDist);
@@ -303,7 +301,7 @@ void X11Display::Do(){
     ks = XKeycodeToKeysym(m_Display, m_event.xkey.keycode,0);
 
     if(ks){
-      cout << "ks : " << XKeysymToString(ks) << endl;
+      std::cout << "ks : " << XKeysymToString(ks) << std::endl;
       if(strcmp(XKeysymToString(ks),"a") == 0){
 	m_Camera->MoveLeft();
       }
@@ -340,7 +338,7 @@ void X11Display::Do(){
 }
 
 void X11Display::Run(){
-  cout << "frite : " << m_X11 << endl;
+  std::cout << "frite : " << m_X11 << std::endl;
   m_eventMask = ButtonPressMask | ButtonReleaseMask | KeyPressMask;
 
   XSelectInput(m_Display,m_Win,m_eventMask); // override prev
@@ -348,11 +346,11 @@ void X11Display::Run(){
   AugmentedReality();
 
   // do{
-  //   cout << "Do!!" << endl;
-  //   cout << "waite" << endl;
+  //   std::cout << "Do!!" << std::endl;
+  //   std::cout << "waite" << std::endl;
   //   XNextEvent( m_Display, &m_event );   // calls XFlush()
   //   ks = XKeycodeToKeysym(m_Display, m_event.xkey.keycode,0);
-  //   cout << "here" << endl;
+  //   std::cout << "here" << std::endl;
   //   if(ks){
   //     if(strcmp(XKeysymToString(ks),"a") == 0){
   // 	m_Camera->MoveLeft();

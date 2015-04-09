@@ -1,8 +1,7 @@
 #include "Point3D.h"
 
 #define PI 3.1415926535897931
-#define print(token) cout << #token << " : " << token << endl
-using namespace std;
+#define print(token) std::cout << #token << " : " << token << std::endl
 
 void Point3D::ApplyMatrices(double Rot[3][3],double Trans[3]){
   double xtmp = x, ytmp = y, ztmp = z;
@@ -72,7 +71,7 @@ Point2D* Point3D::GetTauPhi(Transformation* trans,Camera* cam){
 
 //   // print(Phi);
 //   // print(Tau);
-//   // cout << endl;
+//   // std::cout << std::endl;
 
 //   return new Point2D(Tau,Phi);
 
@@ -83,8 +82,8 @@ double Point3D::Distance(Point3D* p){
 }
 
 void Point3D::Print(const char* str){
-  if(str) cout << str << " ";
-  cout << "Point3D is : ("<< x << "," << y << "," << z << ")" << endl;
+  if(str) std::cout << str << " ";
+  std::cout << "Point3D is : ("<< x << "," << y << "," << z << ")" << std::endl;
     
 }
 

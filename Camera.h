@@ -53,7 +53,7 @@ class Camera{
   /*   m_pos->AddX( -cos(Tau)*sin(Phi)*StepTranslation); */
   /*   m_pos->AddY( -cos(Tau)*cos(Phi)*StepTranslation); */
   /*   m_pos->AddZ( -sin(Tau)*StepTranslation); */
-  /*   //    std::cout << "tau : " << Tau << std::endl; */
+  /*   //    std::std::cout << "tau : " << Tau << std::std::endl; */
   /* }; */
   /* void MoveUp(){ */
   /*   m_pos->AddX( cos(Tau)*sin(Phi)*StepTranslation); */

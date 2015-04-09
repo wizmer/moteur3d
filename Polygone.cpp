@@ -1,6 +1,5 @@
 #include "Polygone.h"
 
-using namespace std;
 
 Polygone::Polygone(Polygone* surf){
   int Nsurf = surf->M.size();
@@ -43,8 +42,8 @@ Polygone::~Polygone(){
   //in prevision of dynamical allocations
 }
 
-vector<Point2D*>* Polygone::GetTauPhi(Transformation* trans,Camera* cam){
-  vector<Point2D*> *Vec = new vector<Point2D*>;
+std::vector<Point2D*>* Polygone::GetTauPhi(Transformation* trans,Camera* cam){
+  std::vector<Point2D*> *Vec = new std::vector<Point2D*>;
   int N = M.size();
   for(int i = 0;i<N;i++){
     Vec -> push_back(M[i] -> GetTauPhi(trans,cam));

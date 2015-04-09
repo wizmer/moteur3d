@@ -1,8 +1,7 @@
 #include "Transformation.h"
 
-using namespace std;
 
-#define print(token) cout << #token << " : " << token << endl
+#define print(token) std::cout << #token << " : " << token << std::endl
 
 Transformation::Transformation(double Rx,double Ry, double Rz,double Tx,double Ty,double Tz,double Sx,double Sy,double Sz){
   m_rot = Matrix::RotationMatrix(Rx,Ry,Rz);
@@ -17,7 +16,7 @@ Transformation::Transformation(double Rx,double Ry, double Rz,double Tx,double T
 }
 
 // Transformation::Transformation(double **fRot,double *fTranslation, double fScale){
-//   cout << "Construct Transformation" << endl;
+//   std::cout << "Construct Transformation" << std::endl;
 //   double **TmpTrans = NULL;
 //   if(fTranslation){
 //     TmpTrans = new double*[3];
@@ -32,7 +31,7 @@ Transformation::Transformation(double Rx,double Ry, double Rz,double Tx,double T
 //   m_scale = fScale;
 //   m_FinalTransfo = new Matrix(4,4);
 //   if(TmpTrans){
-//     cout << "delete TmpTrans" << endl;
+//     std::cout << "delete TmpTrans" << std::endl;
 //     for(int i = 0;i<3;i++) delete TmpTrans[i];
 //     delete[] TmpTrans;
 //   }
@@ -51,12 +50,12 @@ void Transformation::Apply(double &x,double &y,double &z){
 }
 
 void Transformation::SetTranslation(double Tx,double Ty,double Tz){
-  cout << "Transformation::SetTranslation"  << endl;
+  std::cout << "Transformation::SetTranslation"  << std::endl;
   m_trans -> SetTranslation(Tx,Ty,Tz);
 }
 
 void Transformation::SetRotation(double Tx,double Ty,double Tz){
-  cout << "Transformation::SetRotation"  << endl;
+  std::cout << "Transformation::SetRotation"  << std::endl;
   m_rot -> SetRotation(Tx,Ty,Tz);
 }
 

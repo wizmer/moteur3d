@@ -1,7 +1,6 @@
 #include "WorldObject.h"
 
-#define print(token) cout << #token << " : " << token << endl
-using namespace std;
+#define print(token) std::cout << #token << " : " << token << std::endl
 
 WorldObject::WorldObject(GeomObject* obj, Transformation* fTrans):m_GeomObj(obj),m_trans(fTrans){
   m_barycentre = new Point3D();
@@ -12,7 +11,7 @@ WorldObject::WorldObject(GeomObject* obj, Transformation* fTrans):m_GeomObj(obj)
 
 
 WorldObject::WorldObject(GeomObject* obj,double Tx,double Ty,double Tz):m_GeomObj(obj){
-  cout << "construct WorldObject" << endl;
+  std::cout << "construct WorldObject" << std::endl;
   m_barycentre = new Point3D();
 
   m_trans = new Transformation();
@@ -29,11 +28,11 @@ WorldObject::~WorldObject(){
   // In case of dynamical allocations within the constructor.
 }
 
-vector<vector<Point2D*>*>* WorldObject::ProjectWorldObject(Camera* cam){
-  vector<vector<Point2D*>*> *Vec = new vector<vector<Point2D*>*>;
+std::vector<std::vector<Point2D*>*>* WorldObject::ProjectWorldObject(Camera* cam){
+  std::vector<std::vector<Point2D*>*> *Vec = new std::vector< std::vector<Point2D*>*>;
   int N = m_GeomObj -> m_pol.size();
   
-  vector<Point2D*>** p = new vector<Point2D*>*[N * 3];
+  std::vector<Point2D*>** p = new std::vector<Point2D*>*[N * 3];
   int i = 0;
   int chunk = N / 10;
 #pragma omp parallel shared(Vec,cam) private(i)
@@ -50,7 +49,7 @@ vector<vector<Point2D*>*>* WorldObject::ProjectWorldObject(Camera* cam){
 }
 
 void WorldObject::ComputeBarycentre(){
-  cout << "ComputeBarycentre" << endl;
+  std::cout << "ComputeBarycentre" << std::endl;
   m_barycentre -> SetXYZ(0,0,0);
   double Ntot = 0;
   int N = m_GeomObj -> m_pol.size();
@@ -67,7 +66,7 @@ void WorldObject::ComputeBarycentre(){
 }
 
 void WorldObject::ComputeMaxRadius(){
-  cout << "ComputeMaxRadius" << endl;
+  std::cout << "ComputeMaxRadius" << std::endl;
   m_MaxRadius = 0;
   int N = m_GeomObj -> m_pol.size();
   for(int i = 0;i<N;i++){

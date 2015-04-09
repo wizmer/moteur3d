@@ -1,17 +1,14 @@
 #include "GeomObject.h"
 
-using namespace std;
-
 GeomObject::GeomObject(const char* NameFile){
-  string a(NameFile);
-  size_t found = a.find_last_of('.');
-  if(strcmp(NameFile + found + 1,"ply") == 0)  InitBlender(NameFile);
-  else if (strcmp(NameFile + found + 1,"txt") == 0) InitTextFile(NameFile);
+  std::string a(NameFile);
+  if( a.find(".ply") != std::string::npos )  InitBlender(NameFile);
+  else if ( a.find(".txt") != std::string::npos ) InitTextFile(NameFile);
 }
 
 void GeomObject::InitBlender(const char* NameFile){
-  vector<Point3D*> Vec;
-  ifstream f(NameFile);
+  std::vector<Point3D*> Vec;
+  std::ifstream f(NameFile);
   char name[256];
   if(f.is_open()){
     int N = -1;
@@ -30,12 +27,12 @@ void GeomObject::InitBlender(const char* NameFile){
 
   for(int i = 0;i<N;i++){
     f >> x >> y >> z >> u >> v >> w;
-    //   cout << x << "\t" << y << "\t" << z << "\t" << u << "\t" << v << "\t" << w << endl;
+    //   std::cout << x << "\t" << y << "\t" << z << "\t" << u << "\t" << v << "\t" << w << std::endl;
     Vec.push_back(new Point3D(x,y,z));
   }
   
 
-  cout << "nface : " << Nface << endl;
+  std::cout << "nface : " << Nface << std::endl;
   double trash;
   int Npoint,p1,p2,p3,p;
   for(int i = 0;i<Nface;i++){
@@ -50,12 +47,12 @@ void GeomObject::InitBlender(const char* NameFile){
   }
   
   }else{
-    cout << "File : " << NameFile << " not found !" << endl;
+    std::cout << "File : " << NameFile << " not found !" << std::endl;
   }
 }
 
 void GeomObject::InitTextFile(const char* NameFile){
-  ifstream f(NameFile);
+  std::ifstream f(NameFile);
   if(f.is_open()){
     double x1,y1,z1,x2,y2,z2,x3,y3,z3;
     while(!f.eof()){
@@ -64,7 +61,7 @@ void GeomObject::InitTextFile(const char* NameFile){
     }
     m_pol.pop_back();
   }else{
-    cout << "File : " << NameFile << " not found !" << endl;
+    std::cout << "File : " << NameFile << " not found !" << std::endl;
   }
 }
 

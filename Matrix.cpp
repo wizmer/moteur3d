@@ -1,15 +1,14 @@
 #include "Matrix.h"
 
-using namespace std;
 
 Matrix::Matrix(int fRowSize,int fColumnSize,double **fMat){
-  cout << "Construct Matrix" << endl;
+  std::cout << "Construct Matrix" << std::endl;
   Init(fRowSize,fColumnSize);
   if(fMat) SetArray(fMat);
 }
 
 Matrix::Matrix(int fSize,double **fMat){
-  cout << "Construct square Matrix" << endl;
+  std::cout << "Construct square Matrix" << std::endl;
   Init(fSize,fSize);
   if(fMat) SetArray(fMat);
 }
@@ -26,7 +25,7 @@ void Matrix::Init(){
 }
 
 void Matrix::Init(int fRowSize,int fColumnSize){
-  cout << "Init Matrix" << endl;
+  std::cout << "Init Matrix" << std::endl;
   m_RowSize = fRowSize;
   m_ColumnSize = fColumnSize;
   m_mat = new double*[m_RowSize];
@@ -42,7 +41,7 @@ void Matrix::Init(int fRowSize,int fColumnSize){
 }
 
  void Matrix::SetArray(double **fMat){
-   cout << "SetArray" << endl;
+   std::cout << "SetArray" << std::endl;
    for(int i = 0;i<m_RowSize;i++){
      for(int j = 0;j<m_ColumnSize;j++){
        m_mat[i][j] = fMat[i][j];
@@ -51,9 +50,9 @@ void Matrix::Init(int fRowSize,int fColumnSize){
  }
 
 void Matrix::SetTranslation(double Tx,double Ty,double Tz){
-  cout << "SetTranslation" << endl;
+  std::cout << "SetTranslation" << std::endl;
   if(m_ColumnSize != 4 || m_RowSize != 4){
-    cout << "error not a 4*4 matrix" << endl;
+    std::cout << "error not a 4*4 matrix" << std::endl;
     exit(-1);
   }
 
@@ -76,12 +75,12 @@ void Matrix::SetTranslation(double Tx,double Ty,double Tz){
   m_mat[3][1] = 0;
   m_mat[3][2] = 0;
   m_mat[3][3] = 1;
-  cout << "end Matri::SetTranslation" << endl;
+  std::cout << "end Matri::SetTranslation" << std::endl;
 }
 
 void Matrix::SetRotation(double Rx,double Ry,double Rz){
   if(m_ColumnSize != 4 || m_RowSize != 4){
-    cout << "error not a 4*4 matrix" << endl;
+    std::cout << "error not a 4*4 matrix" << std::endl;
     exit(-1);
   }
 
@@ -152,7 +151,7 @@ Matrix* Matrix::ScalingMatrix(double Sx,double Sy,double Sz){
 
 
 // Matrix* Matrix::LeftMultiply(Matrix* fMat){
-//   if(m_ColumnSize != fMat -> GetNRows()){ cout << "bad number of column and row !" << endl; exit(-1);}
+//   if(m_ColumnSize != fMat -> GetNRows()){ std::cout << "bad number of column and row !" << std::endl; exit(-1);}
   
 //   for(int i = 0;i<m_RowSize;i++){
     
@@ -161,22 +160,22 @@ Matrix* Matrix::ScalingMatrix(double Sx,double Sy,double Sz){
 
 
 void Matrix::Print(const char* str){
-  if(str) cout << str << " ";
-  cout << "Matrix is : " << endl << endl;
+  if(str) std::cout << str << " ";
+  std::cout << "Matrix is : " << std::endl << std::endl;
   for(int i = 0;i<m_RowSize;i++){
-    for(int j = 0;j<m_ColumnSize;j++) cout << m_mat[i][j] << "\t";
-    cout << endl;
+    for(int j = 0;j<m_ColumnSize;j++) std::cout << m_mat[i][j] << "\t";
+    std::cout << std::endl;
   }
 }
 
 double Matrix::Get(int i,int j){
   if(i > m_RowSize-1){
-    cout << i << " bigger than row size (" << m_RowSize << ")" << endl;
+    std::cout << i << " bigger than row size (" << m_RowSize << ")" << std::endl;
     exit(-1);
   }
 
   if(j > m_ColumnSize-1){
-    cout << i << " bigger than row size (" << m_RowSize << ")" << endl;
+    std::cout << i << " bigger than row size (" << m_RowSize << ")" << std::endl;
     exit(-1);
   }
 
@@ -186,7 +185,7 @@ double Matrix::Get(int i,int j){
 Matrix& Matrix::operator*=(Matrix mat){
   
   if(m_ColumnSize != mat.m_ColumnSize || m_RowSize != mat.m_RowSize ){
-    cout << "Bad number of row or column" << endl;
+    std::cout << "Bad number of row or column" << std::endl;
     exit(-1);
   }
   
@@ -208,7 +207,7 @@ Matrix& Matrix::operator*=(Matrix mat){
 Matrix* Matrix::operator*(Matrix mat){
   
   if(m_ColumnSize != mat.m_ColumnSize || m_RowSize != mat.m_RowSize ){
-    cout << "Bad number of row or column" << endl;
+    std::cout << "Bad number of row or column" << std::endl;
     exit(-1);
   }
   
@@ -232,7 +231,7 @@ Matrix* Matrix::operator*(Matrix mat){
 Point3D* Matrix::operator*(Point3D p){
   
   if(m_ColumnSize !=  4){
-    cout << "Bad number of row or column in operator*" << endl;
+    std::cout << "Bad number of row or column in operator*" << std::endl;
     exit(-1);
   }
 

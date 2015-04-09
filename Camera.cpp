@@ -1,7 +1,6 @@
 #include "Camera.h"
 
-#define print(token) cout << #token << "\t" << token << endl
-using namespace std;
+#define print(token) std::cout << #token << "\t" << token << std::endl
 
 const double Camera::StepPhi = 0.05;
 const double Camera::StepTau = 0.05;
@@ -11,7 +10,7 @@ Camera::Camera(double Tx,double Ty,double Tz,double Rx,double Ry,double Rz){
   m_M = new Point3D(Tx,Ty,Tz);
   m_phi = Rz;
   m_tau = Rx;
-  cout << "new transfo" << endl;
+  std::cout << "new transfo" << std::endl;
   //  m_rot = new Transformation(Rx,Ry,Rz,Tx,Ty,Tz);
   m_rot = new Matrix(4);
   m_rot -> SetRotation(-m_tau,0,m_phi);

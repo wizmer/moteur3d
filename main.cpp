@@ -4,8 +4,7 @@
 #include <iostream>
 
 #define PI 3.14159265358979312
-#define print(token) cout << #token << " : " << token << endl
-using namespace std;
+#define print(token) std::cout << #token << " : " << token << std::endl
 
 int main(int argc, char *argv[]){
   Scene3D* TheScene3D = Scene3D::GetScene3D();

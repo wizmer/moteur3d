@@ -1,7 +1,6 @@
 #include "Scene2D.h"
 
-#define print(token) cout << #token << " : " << token << endl
-using namespace std;
+#define print(token) std::cout << #token << " : " << token << std::endl
 
 Scene2D* Scene2D::m_manager = 0;
 
@@ -15,7 +14,7 @@ Scene2D* Scene2D::GetScene2D(){
 
 void Scene2D::ProjectWorldObject(WorldObject* obj, Camera* cam){
   X11Display* TheX11Display = X11Display::GetX11Display();
-  vector<vector<Point2D*>*> * Vec = obj -> ProjectWorldObject(cam);
+  std::vector<std::vector<Point2D*>*> * Vec = obj -> ProjectWorldObject(cam);
   int col = 1;
   if(Vec){
     int Npol = Vec->size();
