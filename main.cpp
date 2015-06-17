@@ -9,9 +9,9 @@
 int main(int argc, char *argv[]){
     Scene3D* TheScene3D = Scene3D::GetScene3D();
     //  GeomObject* obj = new GeomObject("spaceship.ply");
-    //  GeomObject* obj = new GeomObject("vadertie.ply");
+    // GeomObject* obj = new GeomObject("vadertie.ply");
     GeomObject* obj = new GeomObject("Cube.txt");
-    //  GeomObject* obj = new GeomObject("LightVadertie.ply");
+    //GeomObject* obj = new GeomObject("LightVadertie.ply");
 
     int N = 10;
     for(int i = 0;i<N;i++){
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
     }
 
     Camera* Cam = new Camera(0,-30,0);
-    glutInit(&argc, argv);
+    // glutInit(&argc, argv);
 
     X11Display::GetX11Display(Cam);
 

@@ -1,5 +1,5 @@
 CXXFLAGS    := -g -Wall -Wfatal-errors
-LIBS :=  -lopencv_core -lopencv_imgproc -lopencv_calib3d -lopencv_video -lopencv_features2d -lopencv_ml -lopencv_highgui -lopencv_objdetect -lopencv_contrib -lopencv_legacy
+LIBS :=  -lopencv_core -lopencv_imgproc -lopencv_calib3d -lopencv_video -lopencv_features2d -lopencv_ml -lopencv_highgui -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lX11
 CXX       = g++
 OPENMP := -fopenmp
 
@@ -11,8 +11,8 @@ all : $(EXE)
 
 $(EXE):$(OBJ)
 	@echo "-> Building exe : " $@
-	@echo $(CXX) ${LIBS} ${OPENMP} -o $(EXE) $(OBJ)  -lGL -lglut 
-	@$(CXX) ${LIBS} ${OPENMP} -o $(EXE) $(OBJ)  -lGL -lglut 
+	@echo $(CXX)  -o $(EXE) $(OBJ)  -lGL -lglut  ${LIBS} ${OPENMP}
+	@$(CXX)  -o $(EXE) $(OBJ)  -lGL -lglut  ${LIBS} ${OPENMP}
 
 %.o : %.cpp
 	@echo "-> Building object : " $@
