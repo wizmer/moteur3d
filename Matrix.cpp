@@ -2,13 +2,13 @@
 
 
 Matrix::Matrix(int fRowSize,int fColumnSize,double **fMat){
-  std::cout << "Construct Matrix" << std::endl;
+    //  std::cout << "Construct Matrix" << std::endl;
   Init(fRowSize,fColumnSize);
   if(fMat) SetArray(fMat);
 }
 
 Matrix::Matrix(int fSize,double **fMat){
-  std::cout << "Construct square Matrix" << std::endl;
+    //  std::cout << "Construct square Matrix" << std::endl;
   Init(fSize,fSize);
   if(fMat) SetArray(fMat);
 }
@@ -25,7 +25,7 @@ void Matrix::Init(){
 }
 
 void Matrix::Init(int fRowSize,int fColumnSize){
-  std::cout << "Init Matrix" << std::endl;
+    //  std::cout << "Init Matrix" << std::endl;
   m_RowSize = fRowSize;
   m_ColumnSize = fColumnSize;
   m_mat = new double*[m_RowSize];
@@ -41,7 +41,7 @@ void Matrix::Init(int fRowSize,int fColumnSize){
 }
 
  void Matrix::SetArray(double **fMat){
-   std::cout << "SetArray" << std::endl;
+     //   std::cout << "SetArray" << std::endl;
    for(int i = 0;i<m_RowSize;i++){
      for(int j = 0;j<m_ColumnSize;j++){
        m_mat[i][j] = fMat[i][j];
@@ -50,7 +50,7 @@ void Matrix::Init(int fRowSize,int fColumnSize){
  }
 
 void Matrix::SetTranslation(double Tx,double Ty,double Tz){
-  std::cout << "SetTranslation" << std::endl;
+    //  std::cout << "SetTranslation" << std::endl;
   if(m_ColumnSize != 4 || m_RowSize != 4){
     std::cout << "error not a 4*4 matrix" << std::endl;
     exit(-1);
@@ -75,7 +75,7 @@ void Matrix::SetTranslation(double Tx,double Ty,double Tz){
   m_mat[3][1] = 0;
   m_mat[3][2] = 0;
   m_mat[3][3] = 1;
-  std::cout << "end Matri::SetTranslation" << std::endl;
+  //  std::cout << "end Matri::SetTranslation" << std::endl;
 }
 
 void Matrix::SetRotation(double Rx,double Ry,double Rz){

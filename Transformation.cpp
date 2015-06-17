@@ -50,12 +50,12 @@ void Transformation::Apply(double &x,double &y,double &z){
 }
 
 void Transformation::SetTranslation(double Tx,double Ty,double Tz){
-  std::cout << "Transformation::SetTranslation"  << std::endl;
+    //  std::cout << "Transformation::SetTranslation"  << std::endl;
   m_trans -> SetTranslation(Tx,Ty,Tz);
 }
 
 void Transformation::SetRotation(double Tx,double Ty,double Tz){
-  std::cout << "Transformation::SetRotation"  << std::endl;
+    //std::cout << "Transformation::SetRotation"  << std::endl;
   m_rot -> SetRotation(Tx,Ty,Tz);
 }
 
@@ -64,7 +64,7 @@ void Transformation::ComputeFinalTransfo(){
   (*m_FinalTransfo) *= (*m_trans);
   (*m_FinalTransfo) *= (*m_rot);
   (*m_FinalTransfo) *= (*m_scale);
-  m_FinalTransfo -> Print("m_FinalTransfo");
+  //m_FinalTransfo -> Print("m_FinalTransfo");
 }
 
 void Transformation::Print(){

@@ -11,7 +11,7 @@ WorldObject::WorldObject(GeomObject* obj, Transformation* fTrans):m_GeomObj(obj)
 
 
 WorldObject::WorldObject(GeomObject* obj,double Tx,double Ty,double Tz):m_GeomObj(obj){
-  std::cout << "construct WorldObject" << std::endl;
+    //  std::cout << "construct WorldObject" << std::endl;
   m_barycentre = new Point3D();
 
   m_trans = new Transformation();
@@ -49,7 +49,7 @@ std::vector<std::vector<Point2D*>*>* WorldObject::ProjectWorldObject(Camera* cam
 }
 
 void WorldObject::ComputeBarycentre(){
-  std::cout << "ComputeBarycentre" << std::endl;
+    //  std::cout << "ComputeBarycentre" << std::endl;
   m_barycentre -> SetXYZ(0,0,0);
   double Ntot = 0;
   int N = m_GeomObj -> m_pol.size();
@@ -66,7 +66,7 @@ void WorldObject::ComputeBarycentre(){
 }
 
 void WorldObject::ComputeMaxRadius(){
-  std::cout << "ComputeMaxRadius" << std::endl;
+    //  std::cout << "ComputeMaxRadius" << std::endl;
   m_MaxRadius = 0;
   int N = m_GeomObj -> m_pol.size();
   for(int i = 0;i<N;i++){

@@ -88,8 +88,8 @@ void Camera::Moving(){
   // For future use, is called when camera is moving
   //  m_rot -> ComputeFinalTransfo();
   //  m_rot -> m_trans -> Print("trans");
-  m_M -> Print("M");
-  m_rot  -> Print("rot");
+  // m_M -> Print("M");
+  // m_rot  -> Print("rot");
   print(m_phi);
   print(m_tau);
 }

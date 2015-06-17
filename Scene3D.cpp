@@ -26,6 +26,6 @@ void Scene3D::Project(Camera* cam){
     // m_wobj[i] ->  PrintTransfo();
     TheScene2D -> ProjectWorldObject(m_wobj[i],cam);
   }
-  cam-> Print();
+  //cam-> Print();
 }
 

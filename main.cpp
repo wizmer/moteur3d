@@ -7,23 +7,24 @@
 #define print(token) std::cout << #token << " : " << token << std::endl
 
 int main(int argc, char *argv[]){
-  Scene3D* TheScene3D = Scene3D::GetScene3D();
-  //  GeomObject* obj = new GeomObject("spaceship.ply");
-  //  GeomObject* obj = new GeomObject("vadertie.ply");
-  GeomObject* obj = new GeomObject("Cube.txt");
-  //  GeomObject* obj = new GeomObject("LightVadertie.ply");
+    Scene3D* TheScene3D = Scene3D::GetScene3D();
+    //  GeomObject* obj = new GeomObject("spaceship.ply");
+    //  GeomObject* obj = new GeomObject("vadertie.ply");
+    GeomObject* obj = new GeomObject("Cube.txt");
+    //  GeomObject* obj = new GeomObject("LightVadertie.ply");
 
-  int N = 10;
-  for(int i = 0;i<N;i++){
-    for(int j = 0;j<N;j++){
-      TheScene3D->AddWorldObject(new WorldObject(obj,5*i,5*j,0));
+    int N = 10;
+    for(int i = 0;i<N;i++){
+        for(int j = 0;j<N;j++){
+            TheScene3D->AddWorldObject(new WorldObject(obj,5*i,5*j,0));
+        }
     }
-  }
 
-  Camera* Cam = new Camera(0,-30,0);
+    Camera* Cam = new Camera(0,-30,0);
+    glutInit(&argc, argv);
 
-  X11Display::GetX11Display(Cam);
+    X11Display::GetX11Display(Cam);
 
-  X11Display::GetX11Display() -> Run();
-  return 1;
+    X11Display::GetX11Display() -> Run();
+    return 1;
 }
